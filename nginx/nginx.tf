@@ -8,11 +8,11 @@ variable "key_name" {
 provider "aws" {
   access_key = "${var.aws_access_key}"
   secret_key = "${var.aws_secret_key}"
-  region     = "us-east-1"
+  region     = "ap-southeast-1"
 }
 
 resource "aws_instance" "nginx" {
-  ami           = "ami-c58c1dd3"
+  ami           = "ami-01da99628f381e50a"
   instance_type = "t2.micro"
   key_name        = "${var.key_name}"
 
@@ -23,7 +23,7 @@ resource "aws_instance" "nginx" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo yum install nginx -y",
+      "sudo amazon-linux-extras install nginx1.12 -y",
       "sudo service nginx start"
     ]
   }
