@@ -103,7 +103,7 @@ resource "aws_security_group" "wa-security-group" {
     protocol = "tcp"
     to_port = 80
     cidr_blocks = [
-      "0.0.0.0/0"]
+      "${var.x_network_address_space}"]
   }
   egress {
     from_port = 0
